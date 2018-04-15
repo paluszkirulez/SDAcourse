@@ -53,7 +53,7 @@ public class IndexFinderImpl<E> implements IndexFinder<E> {
                 resoultList.add(i);
             }
         }
-        if(resoultList.size()==0){
+        if (resoultList.size() == 0) {
             resoultList.add(-1);
         }
         return resoultList;
