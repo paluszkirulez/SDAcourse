@@ -1,3 +1,7 @@
+//pytania:
+1. Czy w findBestEarningEmployee trzeba znów inicjować Departament departament : DepartamentGenerator.getDepartaments()
+żeby pętla miała po czym iść
+
 Zadanie domowe numer dwa:
 
 Klasa Salaries zawiera metody findBestEarningEmployee(Departament) oraz findBestEarningEmployee()

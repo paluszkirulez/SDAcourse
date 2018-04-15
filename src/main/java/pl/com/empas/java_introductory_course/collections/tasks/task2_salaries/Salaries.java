@@ -4,6 +4,8 @@ import pl.com.empas.java_introductory_course.collections.common.Departament;
 import pl.com.empas.java_introductory_course.collections.common.DepartamentGenerator;
 import pl.com.empas.java_introductory_course.collections.common.Employee;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,19 +22,47 @@ public class Salaries {
      * @return highest earning employee in a departament;
      */
     public Employee findBestEarningEmployee(Departament departament) {
-      return null;
+
+      List<Employee> tmpListEmployee = new ArrayList<>();
+             tmpListEmployee.addAll(departamentMap.get(departament));
+        //System.out.println(tmpListEmployee);
+
+      long biggestSalary = 0;
+      int bestEmployee = 0;
+
+      for(int i=0;i<tmpListEmployee.size();i++){
+
+          if(tmpListEmployee.get(i).getSalary()>biggestSalary) {
+              biggestSalary = tmpListEmployee.get(i).getSalary();
+              bestEmployee = i;
+          }
+
+      }
+        return tmpListEmployee.get(bestEmployee);
     }
 
     //Użyj poprzedniej metody!
     public Employee findBestEarningEmployee() {
-     return null;
+        long bestSalary = 0;
+        Employee bestEmployee = new Employee(0,"", (long) 0.0);
+        for(Departament departament : DepartamentGenerator.getDepartaments()){
+            Employee employee = findBestEarningEmployee(departament);
+            if(employee.getSalary()>bestSalary){
+                bestSalary = employee.getSalary();
+                bestEmployee = employee;
+            }
+        }
+
+        return bestEmployee;
     }
 
     public static void main(String [] args) {
         Salaries salaries = new Salaries();
+        //System.out.println(departamentMap);
         System.out.println("Best earning emloyee in all departaments: " + salaries.findBestEarningEmployee());
+
         for(Departament departament : DepartamentGenerator.getDepartaments()) {
-            System.out.println("Best earning employee in departament " + departament.getName() + " is " + salaries.findBestEarningEmployee(departament));
+            System.out.println("Best earning employee in departament " + departament.getName() + " is " + salaries.findBestEarningEmployee(departament).getName());
         }
     }
 }
